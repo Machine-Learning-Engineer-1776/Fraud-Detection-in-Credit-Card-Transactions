@@ -9,6 +9,8 @@
 
 The **`Credit Card Fraud Detection`** project builds a machine learning pipeline to identify fraudulent transactions using the Kaggle Credit Card Fraud Detection dataset. It employs `XGBoost` and `Logistic Regression` models to tackle extreme class imbalance (99.83% legitimate, 0.17% fraudulent), achieving a **ROC-AUC of 0.972**. The project includes data preprocessing, feature engineering, model training, and interactive visualizations, showcasing expertise in machine learning and data analysis for fintech applications.
 
+[Kaggle DataSet For Reference](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+
 **Key Accomplishments**
 + Model Performance: Achieved ROC-AUC of 0.972 with `XGBoost`, effectively detecting fraud despite imbalance, using `SMOTE` and weighted training.
   + Balanced predictions with precision-recall AUC and F1-score, critical for rare fraud cases.
