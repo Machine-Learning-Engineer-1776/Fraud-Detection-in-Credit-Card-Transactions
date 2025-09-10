@@ -15,8 +15,8 @@ The **`Credit Card Fraud Detection`** project builds a machine learning pipeline
 
 </div>
 
-**Key Accomplishments**
-+ Model Performance: Achieved ROC-AUC of 0.972 with `XGBoost`, effectively detecting fraud despite imbalance, using `SMOTE` and weighted training.
+**Key Accomplishments:**
++ Model Performance: Achieved **ROC-AUC of 0.972** with `XGBoost`, effectively detecting fraud despite imbalance, using `SMOTE` and weighted training.
   + Balanced predictions with precision-recall AUC and F1-score, critical for rare fraud cases.
   + Engineered features like transaction frequency and amount deviation for robust detection.
 + Visualization: Created interactive `Plotly` charts, including fraud probability histogram, class distribution, ROC curve, Precision-Recall Curve, and feature importance.
