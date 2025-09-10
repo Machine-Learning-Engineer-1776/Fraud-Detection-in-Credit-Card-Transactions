@@ -1,5 +1,12 @@
 # Fraud-Detection-in-Credit-Card-Transactions
 
+<div align="center">
+
+![Lock That Cheese](https://github.com/user-attachments/assets/f62a38ac-c2fc-45c5-b397-b456816c773d)
+
+</div>
+
+
 The `Credit Card Fraud Detection` project builds a machine learning pipeline to identify fraudulent transactions using the Kaggle Credit Card Fraud Detection dataset. It employs `XGBoost` and `Logistic Regression` models to tackle extreme class imbalance (99.83% legitimate, 0.17% fraudulent), achieving a ROC-AUC of 0.972. The project includes data preprocessing, feature engineering, model training, and interactive visualizations, showcasing expertise in machine learning and data analysis for fintech applications.
 
 Key Accomplishments
