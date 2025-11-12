@@ -120,4 +120,3 @@ Built in **Google Colab** — **no deployment, no real data**.
 
 ---
 
-**Made with code, not claims.**
