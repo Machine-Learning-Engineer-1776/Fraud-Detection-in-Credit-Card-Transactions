@@ -56,7 +56,7 @@ Built in **Google Colab** — **no deployment, no real data**.
 
 ---
 
-## Files Generated (100% Real)
+## Files Generated
 
 - `preprocessed_creditcard.csv`
 - `engineered_creditcard.csv`
