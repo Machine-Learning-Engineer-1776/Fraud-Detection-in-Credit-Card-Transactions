@@ -86,6 +86,12 @@ Built in **Google Colab** — **no deployment, no real data**.
 | **PR-AUC** | ~0.85 | ~0.80 |
 | **F1-Score** | ~0.90 | ~0.85 |
 
+<img width="461" height="385" alt="image" src="https://github.com/user-attachments/assets/f1ca67a3-94c6-4d71-a00c-5a7bfded87ba" />
+
+<img width="467" height="391" alt="{4AA535AA-DC18-4A16-8DD3-B9F2B8AD00BE}" src="https://github.com/user-attachments/assets/e798deb3-d9a6-4087-9e7f-5e44c097fdd5" />
+
+
+
 > **Note:** High scores due to **clean, public dataset**. Real fraud is messier.
 
 ---
