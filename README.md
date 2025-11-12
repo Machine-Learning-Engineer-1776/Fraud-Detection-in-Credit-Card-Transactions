@@ -51,8 +51,8 @@ Built in **Google Colab** — **no deployment, no real data**.
 - **Logistic Regression** with **SMOTE**
 
 ### 3. Interactive Plots
-![Fraud Probabilities](histogram.html)  
-*Histogram of predicted fraud scores*
+
+<img width="497" height="425" alt="{A1FCC168-58AE-4F71-B071-27CC209B7409}" src="https://github.com/user-attachments/assets/4c409615-1835-49d3-b077-41ab310f2af2" />
 
 ---
 
