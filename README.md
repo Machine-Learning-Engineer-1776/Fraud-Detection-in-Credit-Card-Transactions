@@ -1,122 +1,73 @@
 # Credit Card Fraud Detection
-**XGBoost + Logistic Regression on Kaggle Dataset**
+**XGBoost vs. Logistic Regression on a highly imbalanced public dataset (0.17% fraud)**
 
-![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
-![XGBoost](https://img.shields.io/badge/XGBoost-1.7-orange)
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![XGBoost](https://img.shields.io/badge/XGBoost-3.0-orange)
 ![Plotly](https://img.shields.io/badge/Plotly-Interactive-green)
 
-**Live Notebook:** [Colab Demo](https://colab.research.google.com/drive/13zeGVos5HIIZyV8jv1klzLXdbXSByfAL)  
-**GitHub:** [github.com/YOUR_USERNAME/Fraud-Detection](https://github.com/YOUR_USERNAME/Fraud-Detection)
+**Notebook:** [Open in Colab](https://colab.research.google.com/drive/13zeGVos5HIIZyV8jv1klzLXdbXSByfAL)  
+**Repo:** [github.com/Machine-Learning-Engineer-1776/Fraud-Detection-in-Credit-Card-Transactions](https://github.com/Machine-Learning-Engineer-1776/Fraud-Detection-in-Credit-Card-Transactions)
 
 ---
 
-## Overview
+## What it does
 
-**Fraud Detection in Transactions** is a **complete ML pipeline** that:
-- Loads the **Kaggle Credit Card Fraud** dataset
-- Engineers **8 behavioral features**
-- Trains **XGBoost** and **Logistic Regression**
-- Evaluates with **ROC-AUC, PR-AUC, F1**
-- Visualizes results with **5 interactive Plotly charts**
+An end-to-end notebook pipeline that:
+- Downloads the [Kaggle Credit Card Fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) (`mlg-ulb/creditcardfraud`) via `kagglehub`: 284,807 transactions, 492 fraud (0.17%), PCA-anonymized features `V1`–`V28` plus `Time` and `Amount`
+- Scales `Amount`/`Time` and engineers 8 features (`hour_of_day`, `time_since_last_txn`, `txn_count_rolling`, `amount_to_median_ratio`, `is_top_5pct_amount`, `avg_amount_per_hour`, `amount_std_rolling`, `amount_deviation`)
+- Trains **XGBoost** (with `scale_pos_weight`) and **Logistic Regression** (with **SMOTE** oversampling) on a stratified 80/20 split
+- Evaluates with ROC-AUC, PR-AUC, F1 and classification reports
+- Produces 5 interactive Plotly charts (probability histogram, class distribution, ROC, PR curve, feature importance)
 
-Built in **Google Colab** — **no deployment, no real data**.
-
----
-
-## What This Code Actually Does
-
-| Step | Output |
-|------|--------|
-| **Data Prep** | Scales `Amount`/`Time` → adds `hour_of_day` | `preprocessed_creditcard.csv` |
-| **Feature Engineering** | 8 new features: `time_since_last_txn`, `amount_to_median_ratio`, etc. | `engineered_creditcard.csv` |
-| **Modeling** | XGBoost + Logistic Regression (SMOTE) | `xgb_model.pkl`, `predictions.csv` |
-| **Evaluation** | ROC-AUC: ~0.97, PR-AUC: ~0.85, F1: ~0.90 | `model_metrics.csv` |
-| **Visualization** | 5 interactive HTML plots | `histogram.html`, `roc_curve.html`, etc. |
+No deployment; this is a notebook project.
 
 ---
 
-## Key Features
+## Results (test set: 56,962 transactions, 98 fraud)
 
-### 1. Behavioral Feature Engineering
-- time_since_last_txn
-- amount_to_median_ratio
-- txn_count_rolling
-- is_top_5pct_amount
+| Metric | XGBoost | Logistic Regression + SMOTE |
+|--------|---------|-----------------------------|
+| **ROC-AUC** | 0.977 | 0.975 |
+| **PR-AUC** | 0.884 | 0.810 |
+| **F1 (fraud class)** | 0.857 | 0.168 |
+| **Precision / Recall (fraud)** | 0.89 / 0.83 | 0.09 / 0.92 |
 
----
+Takeaways:
+- ROC-AUC looks similar for both models, but on data this imbalanced **PR-AUC and F1 tell the real story**: XGBoost is far more precise.
+- Logistic Regression with SMOTE catches more fraud (92% recall) but flags ~10 legitimate transactions for every real one at the default 0.5 threshold.
+- This is a clean, well-studied benchmark dataset; real-world fraud data is messier.
 
+<img width="461" height="385" alt="ROC curve" src="https://github.com/user-attachments/assets/f1ca67a3-94c6-4d71-a00c-5a7bfded87ba" />
 
-### 2. Two Models
-- **XGBoost** with `scale_pos_weight`
-- **Logistic Regression** with **SMOTE**
+<img width="467" height="391" alt="Precision-recall curve" src="https://github.com/user-attachments/assets/e798deb3-d9a6-4087-9e7f-5e44c097fdd5" />
 
-### 3. Interactive Plots
+<img width="497" height="425" alt="Interactive Plotly chart" src="https://github.com/user-attachments/assets/4c409615-1835-49d3-b077-41ab310f2af2" />
 
-<img width="497" height="425" alt="{A1FCC168-58AE-4F71-B071-27CC209B7409}" src="https://github.com/user-attachments/assets/4c409615-1835-49d3-b077-41ab310f2af2" />
-
----
-
-## Files Generated
-
-- `preprocessed_creditcard.csv`
-- `engineered_creditcard.csv`
-- `features_creditcard.csv`
-- `target_creditcard.csv`
-- `predictions.csv`
-- `model_metrics.csv`
-- `xgb_model.pkl`
-- `lr_model.pkl`
-- 5 × `.html` interactive plots
+### Next steps
+- Tune the decision threshold for Logistic Regression instead of using 0.5
+- Compute rolling/time features inside the training split only, to rule out leakage
+- Add cross-validation and report variance across folds
 
 ---
 
-## How to Run (5 Minutes)
+## How to run
 
-1. Open [Colab Notebook](https://colab.research.google.com/drive/13zeGVos5HIIZyV8jv1klzLXdbXSByfAL)
-2. Run all cells
-3. Download **12 files** → Add to portfolio
+1. Open the [Colab notebook](https://colab.research.google.com/drive/13zeGVos5HIIZyV8jv1klzLXdbXSByfAL) (or `Model/Fraud_Detection_in_Transactions.ipynb`)
+2. Run all cells. The dataset is downloaded automatically with `kagglehub` (Kaggle access may be required)
+3. Outputs: `preprocessed_creditcard.csv`, `engineered_creditcard.csv`, `features_creditcard.csv`, `target_creditcard.csv`, `predictions.csv`, `model_metrics.csv`, `xgb_model.pkl`, `lr_model.pkl`, and 5 `.html` charts
 
----
-
-## Model Performance (From Code)
-
-| Metric | XGBoost | Logistic Regression |
-|--------|---------|---------------------|
-| **ROC-AUC** | ~0.97 | ~0.95 |
-| **PR-AUC** | ~0.85 | ~0.80 |
-| **F1-Score** | ~0.90 | ~0.85 |
-
-<img width="461" height="385" alt="image" src="https://github.com/user-attachments/assets/f1ca67a3-94c6-4d71-a00c-5a7bfded87ba" />
-
-<img width="467" height="391" alt="{4AA535AA-DC18-4A16-8DD3-B9F2B8AD00BE}" src="https://github.com/user-attachments/assets/e798deb3-d9a6-4087-9e7f-5e44c097fdd5" />
-
-
-
-> **Note:** High scores due to **clean, public dataset**. Real fraud is messier.
+Main packages: `pandas numpy scikit-learn xgboost imbalanced-learn plotly joblib kagglehub`
 
 ---
 
-## Tech Stack
-
-| Tool | Purpose |
-|------|--------|
-| **Pandas** | Data prep |
-| **Scikit-learn** | Split, SMOTE, metrics |
-| **XGBoost** | Gradient boosting |
-| **Plotly** | Interactive charts |
-| **Joblib** | Model saving |
+## Tech stack
+pandas, NumPy, scikit-learn, imbalanced-learn (SMOTE), XGBoost, Plotly, joblib, Google Colab
 
 ---
 
-## This Project Proves:
-
-- You can **handle imbalanced data**
-- You can **engineer features**
-- You can **train + evaluate models**
-- You can **visualize results**
-- You can **document a pipeline**
-
-**Perfect for Data Scientist / ML Engineer roles.**
-
----
-
+## Project structure
+```
+Model/
+  Fraud_Detection_in_Transactions.ipynb   # main notebook (with outputs)
+  fraud_detection_in_transactions.py      # script export of the notebook
+```
