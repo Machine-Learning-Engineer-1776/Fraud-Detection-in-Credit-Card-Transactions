@@ -403,7 +403,8 @@ fig_bar.update_layout(
 display(fig_bar)
 
 # ROC Curve
-print("\n" + wrap_text("ROC Curve: This plot shows the Receiver Operating Characteristic curve for the XGBoost model, illustrating its ability to balance true positive and false positive rates, with an AUC of ~0.972 indicating strong performance."))
+## This caption matches the ROC-AUC printed by the evaluation cell (0.977).
+print("\n" + wrap_text("ROC Curve: This plot shows the Receiver Operating Characteristic curve for the XGBoost model, illustrating its ability to balance true positive and false positive rates, with an AUC of ~0.977 indicating strong performance."))
 fpr, tpr, _ = roc_curve(predictions['y_true'], predictions['y_pred_proba_xgb'])
 roc_auc = metrics[metrics['Model'] == 'XGBoost']['ROC_AUC'].iloc[0]
 fig_roc = go.Figure()

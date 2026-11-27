@@ -55,7 +55,6 @@ Takeaways:
 - ROC-AUC looks similar for both models, but on data this imbalanced **PR-AUC and F1 tell the real story**: XGBoost is far more precise.
 - Logistic Regression with SMOTE catches more fraud (92% recall) but flags ~10 legitimate transactions for every real one at the default 0.5 threshold.
 - This is a clean, well-studied benchmark dataset; real-world fraud data is messier.
-- One older text cell in the notebook still says "AUC of ~0.972". The printed result is 0.977.
 
 <img width="461" height="385" alt="ROC curve" src="https://github.com/user-attachments/assets/f1ca67a3-94c6-4d71-a00c-5a7bfded87ba" />
 
