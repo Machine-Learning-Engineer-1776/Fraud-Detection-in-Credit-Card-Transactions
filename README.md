@@ -84,7 +84,7 @@ pip install pandas numpy scikit-learn xgboost imbalanced-learn plotly joblib kag
 jupyter notebook Model/Fraud_Detection_in_Transactions.ipynb
 ```
 
-There is no `requirements.txt` yet, and package versions are not pinned.
+Package versions are pinned in `requirements.txt`.
 
 ---
 

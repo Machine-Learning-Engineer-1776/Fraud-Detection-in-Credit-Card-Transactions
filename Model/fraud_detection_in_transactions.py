@@ -101,7 +101,10 @@ This block enhances the preprocessed dataset by adding temporal and amount-based
 
 """
 
-pip install pandas numpy
+## This was a notebook install cell (`pip install pandas numpy`). It is not
+## valid Python, so it is commented out. Install from requirements.txt instead.
+## The analysis below is unchanged.
+# pip install pandas numpy
 
 import pandas as pd
 import numpy as np
@@ -246,7 +249,10 @@ This block trains XGBoost and Logistic Regression models on the engineered featu
 
 """
 
-pip install pandas numpy scikit-learn xgboost imblearn joblib
+## This was a notebook install cell (`pip install pandas numpy scikit-learn
+## xgboost imblearn joblib`). It is not valid Python, so it is commented out.
+## Install from requirements.txt instead. The analysis below is unchanged.
+# pip install pandas numpy scikit-learn xgboost imblearn joblib
 
 import pandas as pd
 import numpy as np
@@ -332,7 +338,10 @@ This block creates interactive visualizations using Plotly, including a histogra
 
 """
 
-!pip install dash plotly pandas scikit-learn xgboost joblib
+## This was a notebook install cell (`!pip install dash plotly pandas
+## scikit-learn xgboost joblib`). It is not valid Python, so it is commented out.
+## Install from requirements.txt instead. The analysis below is unchanged.
+# !pip install dash plotly pandas scikit-learn xgboost joblib
 
 import pandas as pd
 import plotly.express as px

@@ -1,0 +1,21 @@
+# Pins taken from the install logs stored in
+# Model/Fraud_Detection_in_Transactions.ipynb (Colab, Python 3.12).
+# Each version was checked on PyPI (HTTP 200) on 2026-11-27.
+#
+# imbalanced-learn is the real package behind `from imblearn...`.
+# The notebook also installed the empty wrapper `imblearn==0.0`; that wrapper
+# is not listed here because imbalanced-learn already provides the import.
+#
+# kagglehub was imported but no version was recorded in the notebook outputs.
+# 1.0.3 is the version published on PyPI as of 2026-11-27 (verified HTTP 200).
+#
+# IPython.display is imported for notebook HTML output only. It is part of the
+# Colab runtime; no version was logged, so it is not pinned here.
+pandas==2.2.2
+numpy==2.0.2
+scikit-learn==1.6.1
+xgboost==3.0.4
+imbalanced-learn==0.14.0
+joblib==1.5.2
+plotly==5.24.1
+kagglehub==1.0.3
