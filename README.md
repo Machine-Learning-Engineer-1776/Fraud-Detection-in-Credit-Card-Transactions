@@ -5,6 +5,7 @@
 ![XGBoost](https://img.shields.io/badge/XGBoost-3.0-orange)
 ![Plotly](https://img.shields.io/badge/Plotly-Interactive-green)
 
+**Live demo:** none. This is a notebook project.  
 **Notebook:** [Open in Colab](https://colab.research.google.com/drive/13zeGVos5HIIZyV8jv1klzLXdbXSByfAL)  
 **Repo:** [github.com/Machine-Learning-Engineer-1776/Fraud-Detection-in-Credit-Card-Transactions](https://github.com/Machine-Learning-Engineer-1776/Fraud-Detection-in-Credit-Card-Transactions)
 
@@ -23,7 +24,25 @@ No deployment; this is a notebook project.
 
 ---
 
+## Architecture
+
+```mermaid
+graph LR
+    A[Kaggle creditcard.csv<br/>284,807 rows] --> B[Scale Amount / Time<br/>+ 8 engineered features]
+    B --> C[Stratified 80/20 split]
+    C --> D[XGBoost<br/>scale_pos_weight]
+    C --> E[SMOTE on training data<br/>then Logistic Regression]
+    D --> F[ROC-AUC, PR-AUC, F1<br/>+ Plotly charts]
+    E --> F
+```
+
+Everything runs in one notebook on Colab. There is no server.
+
+---
+
 ## Results (test set: 56,962 transactions, 98 fraud)
+
+All numbers are printed in `Model/Fraud_Detection_in_Transactions.ipynb` (evaluation cell).
 
 | Metric | XGBoost | Logistic Regression + SMOTE |
 |--------|---------|-----------------------------|
@@ -58,6 +77,15 @@ Takeaways:
 
 Main packages: `pandas numpy scikit-learn xgboost imbalanced-learn plotly joblib kagglehub`
 
+To run outside Colab:
+
+```bash
+pip install pandas numpy scikit-learn xgboost imbalanced-learn plotly joblib kagglehub jupyter
+jupyter notebook Model/Fraud_Detection_in_Transactions.ipynb
+```
+
+There is no `requirements.txt` yet, and package versions are not pinned.
+
 ---
 
 ## Tech stack
@@ -71,3 +99,7 @@ Model/
   Fraud_Detection_in_Transactions.ipynb   # main notebook (with outputs)
   fraud_detection_in_transactions.py      # script export of the notebook
 ```
+
+---
+
+Built by Ron Lance, [Alpha Peak Technologies](https://alphapeaktech.com) · [LinkedIn](https://www.linkedin.com/in/ron-lance-49aa2a8/)
